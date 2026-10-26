@@ -130,9 +130,7 @@ También revisamos todo el código buscando `innerHTML`. Lo usabamos en dos part
 Para la prueba, un amigo llamado Santiago lleno la tabla con los datos de Santiago Henao, santi@gmail.com, contraseña santi20 y edad 16, mientras observababamos sin ayudar. Se demoró un minuto y 36 segundos en completarlo. Después lo repetimos usando solo el teclado (Tab, Mayús + Tab, Espacio y Enter) y si se pudo llegar a cada uno de los campos y enviar lo correspondiente.
 
 | Observación | Campo | Problema | Corrección aplicada |
-
+|---|---|---|---|
 | 1 | Contraseña | Cuando uno va a escribir la contraseña no sabe qué requisitos tiene desde el principio, entonces es difícil que funcione a la primera. Uno solo se entera cuando se equivoca y sale el error. Ahi si se sabe que debe tener la contraseña. | Agregamos una pista debajo del campo que dice "Mínimo 8 caracteres, con al menos una letra y un número", para que quien este llenando el formulario sepa desde antes qué tiene que escribir. También la conectamos con `aria-describedby` para que el lector de pantalla la lea. |
-
 | 2 | Edad | Al escribir una edad menor a 18, como 16 que es lo que nos sugieren en el enunciado, sale el mensaje "El valor mínimo es 18.". O sea, la persona puede no entender que el problema es que no tiene la edad para registrarse. | Cambiamos el mensaje en `validaciones.js` por "Debes tener al menos 18 años para registrarte.", para que sea mas especifico el porque no puede crear la cuenta. |
-
 | 3 | Nombre, Correo, Contraseña, Confirmar y Edad | Si uno envía el formulario con estos campos vacíos, todos dicen lo mismo: "Este campo es obligatorio.". El mensaje no dice qué hay que hacer, solo que está mal. | Cambiamos los mensajes en `validaciones.js` para que cada campo diga qué escribir. |
