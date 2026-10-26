@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- esto hace que se vean bien las tildes y la ñ -->
+  <meta charset="utf-8">
+  <!-- esto hace que la pagina se acomode bien en el celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro</title>
+  <!-- aqui se conecta el archivo de estilos para que la pagina se vea bonita -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <!-- el formulario de registro, los datos se mandan a una pagina de prueba -->
+  <!-- el novalidate apaga los avisos del navegador porque los errores los maneja el javascript -->
+  <form id="registro" action="https://jsonplaceholder.typicode.com/posts" method="post" novalidate>
+
+    <!-- el nombre es obligatorio y tiene que tener entre 3 y 60 letras -->
+    <!-- debajo de cada campo hay un parrafo vacio donde sale su error si lo escriben mal -->
+    <label for="nombre">Nombre completo</label>
+    <input id="nombre" name="nombre" type="text"
+           required minlength="3" maxlength="60" autocomplete="name"
+           aria-describedby="nombre-error">
+    <p id="nombre-error" class="error" aria-live="polite"></p>
+
+    <!-- el correo, aqui tambien sale el aviso si ya esta registrado -->
+    <label for="email">Correo</label>
+    <input id="email" name="email" type="email" required autocomplete="email"
+           aria-describedby="email-error">
+    <p id="email-error" class="error" aria-live="polite"></p>
+
+    <!-- la contraseña se esconde al escribir, pide minimo 8 caracteres con letras y numeros -->
+    <!-- debajo tiene una ayudita fija que explica como debe ser -->
+    <label for="password">Contraseña</label>
+    <input id="password" name="password" type="password"
+           required minlength="8"
+           pattern="(?=.*[A-Za-z])(?=.*\d).{8,}"
+           autocomplete="new-password"
+           aria-describedby="password-pista password-error">
+    <small id="password-pista" class="pista">Mínimo 8 caracteres, con al menos una letra y un número.</small>
+    <p id="password-error" class="error" aria-live="polite"></p>
+
+    <!-- aqui se repite la contraseña para confirmar que quedo igual -->
+    <label for="confirmar">Confirmar contraseña</label>
+    <input id="confirmar" name="confirmar" type="password"
+           required minlength="8" autocomplete="new-password"
+           aria-describedby="confirmar-error">
+    <p id="confirmar-error" class="error" aria-live="polite"></p>
+
+    <!-- solo acepta numeros enteros y la persona tiene que ser mayor de edad -->
+    <label for="edad">Edad</label>
+    <input id="edad" name="edad" type="number"
+           required min="18" max="120" step="1"
+           aria-describedby="edad-error">
+    <p id="edad-error" class="error" aria-live="polite"></p>
+
+    <!-- lista para escoger el pais, la primera opcion esta vacia para obligar a elegir uno -->
+    <label for="pais">País</label>
+    <select id="pais" name="pais" required aria-describedby="pais-error">
+      <option value="">Elige un país</option>
+      <option value="CO">Colombia</option>
+      <option value="MX">México</option>
+      <option value="AR">Argentina</option>
+      <option value="PE">Perú</option>
+      <option value="CL">Chile</option>
+    </select>
+    <p id="pais-error" class="error" aria-live="polite"></p>
+
+    <!-- la casilla de terminos, si no se marca no deja crear la cuenta -->
+    <label class="check">
+      <input id="terminos" name="terminos" type="checkbox" required
+             aria-describedby="terminos-error">
+      Acepto los términos
+    </label>
+    <p id="terminos-error" class="error" aria-live="polite"></p>
+
+    <!-- aqui van apareciendo los telefonos que se agregan con el boton de abajo -->
+    <div id="telefonos"></div>
+    <button type="button" id="agregar-telefono" class="secundario">Agregar teléfono</button>
+
+    <!-- el boton que envia todo -->
+    <button type="submit">Crear cuenta</button>
+    <!-- aqui sale si la cuenta se creo o si hubo un problema -->
+    <p id="mensaje" role="status"></p>
+    <!-- y aqui sale el saludo con el nombre cuando todo sale bien -->
+     <p id="saludo"></p>
+  </form>
+
+  <!-- se conecta el javascript que hace que todo funcione -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

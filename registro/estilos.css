@@ -1,0 +1,90 @@
+/* estilo general de toda la pagina, la letra, el fondo grisecito y un espacio en los bordes */
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f4f4;
+  padding: 16px;
+}
+
+/* el formulario pone todo en columna, uno debajo del otro */
+/* no se deja estirar mas de 360px, queda centrado y como una tarjeta blanca con bordes redondeados */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 360px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* las cajitas, la lista y los botones tienen el mismo tamaño de letra y un borde gris suave */
+input, select, button {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+/* para que la casilla de terminos y su texto queden en la misma linea */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* el boton principal es azul con letra blanca y la manito aparece al pasar el mouse */
+button {
+  margin-top: 8px;
+  background: #2c6fbb;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* los mensajes de error salen en rojo y un poquito mas pequeños */
+/* el min-height deja el espacio reservado para que nada salte cuando aparece el error */
+.error {
+  color: #c0392b;
+  min-height: 1.2em;
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+}
+
+/* cuando un campo esta malo el javascript le pone aria-invalid y aqui se pinta el borde rojo */
+[aria-invalid="true"] {
+  border: 2px solid #c0392b;
+}
+
+/* los botones de agregar telefono y quitar se ven al reves, fondo blanco y letra azul */
+.secundario {
+  background: white;
+  color: #2c6fbb;
+  border: 1px solid #2c6fbb;
+}
+
+/* cada fila de telefono se arma como una cuadricula para que la cajita y el boton de quitar queden lado a lado */
+#telefonos > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px;
+}
+
+/* el texto del telefono y su error ocupan todo el ancho de la fila */
+#telefonos label,
+#telefonos .error {
+  grid-column: 1 / -1;
+}
+
+/* la ayudita que sale debajo de la contraseña, en morado y mas pequeña */
+.pista {
+  color: #5c3ae3;
+  font-size: 0.85rem;
+}
+
+/* el borde naranja que muestra en qué campo está el cursor al usar el teclado */
+:focus-visible {
+  outline: 3px solid #f39c12;
+  outline-offset: 2px;
+}

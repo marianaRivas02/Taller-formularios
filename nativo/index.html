@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- esto hace que se vean bien las tildes y la ñ -->
+  <meta charset="utf-8">
+  <!-- para que la pagina se acomode bien en el celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro</title>
+</head>
+<body>
+  <!-- cuando se envian los datos se mandan a una pagina de prueba -->
+  <form id="registro" action="https://jsonplaceholder.typicode.com/posts" method="post">
+
+    <!-- el nombre es obligatorio y tiene que tener entre 3 y 60 letras -->
+    <label for="nombre">Nombre completo</label>
+    <input id="nombre" name="nombre" type="text"
+           required minlength="3" maxlength="60" autocomplete="name">
+
+    <!-- el tipo email hace que el navegador revise que si tenga forma de correo -->
+    <label for="email">Correo</label>
+    <input id="email" name="email" type="email" required autocomplete="email">
+
+    <!-- la contraseña se esconde mientras se escribe y pide minimo 8 caracteres -->
+    <!-- el pattern obliga a que tenga por lo menos una letra y un numero -->
+    <!-- y el title es el mensajito que sale si no cumple -->
+    <label for="password">Contraseña</label>
+    <input id="password" name="password" type="password"
+           required minlength="8"
+           pattern="(?=.*[A-Za-z])(?=.*\d).{8,}"
+           title="Mínimo 8 caracteres, con al menos una letra y un número"
+           autocomplete="new-password">
+
+    <!-- aqui se repite la contraseña para confirmar que quedo bien escrita -->
+    <label for="confirmar">Confirmar contraseña</label>
+    <input id="confirmar" name="confirmar" type="password"
+           required minlength="8" autocomplete="new-password">
+
+    <!-- solo acepta numeros enteros y la persona tiene que ser mayor de edad -->
+    <label for="edad">Edad</label>
+    <input id="edad" name="edad" type="number"
+           required min="18" max="120" step="1">
+
+    <!-- lista para escoger el pais, la primera opcion esta vacia para obligar a elegir uno -->
+    <label for="pais">País</label>
+    <select id="pais" name="pais" required>
+      <option value="">Elige un país</option>
+      <option value="CO">Colombia</option>
+      <option value="MX">México</option>
+      <option value="AR">Argentina</option>
+      <option value="PE">Perú</option>
+      <option value="CL">Chile</option>
+    </select>
+
+    <!-- la casilla de terminos, si no se marca no deja crear la cuenta -->
+    <label>
+      <input id="terminos" name="terminos" type="checkbox" required>
+      Acepto los términos
+    </label>
+
+    <!-- el boton que envia todo -->
+    <button type="submit">Crear cuenta</button>
+    <!-- aqui se pueden mostrar mensajes, como si el registro salio bien o mal -->
+    <p id="mensaje" role="status"></p>
+  </form>
+</body>
+</html>
